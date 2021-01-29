@@ -1,0 +1,169 @@
+$pdf= new FPDF('L','mm','A4');
+		
+		$pdf->AddPage();
+		
+		$pdf->SetFont('Arial','B','16');
+		$ya=44;
+		
+		$pdf->Cell(290,7,'Laporan Knowledge Explicit | Laporan Pengetahuan Explicit Pusat Komputer IAIN Bengkulu',0,1,'C');
+		$pdf->SetFont('Arial','B','14');
+		$pdf->Cell(290,7,'Daftar Pengetahuan Explicit Pegawai Pusat Komputer 2019',0,1,'C');
+		
+		$pdf->Cell(15,8,'',0,1);
+		$pdf->SetFont('Arial','B','12');
+		$pdf->Cell(15,6,'ID',1,0);
+		$pdf->Cell(40,6,'NAMA',1,0);
+		$pdf->Cell(40,6,'JUDUL',1,0);
+		$pdf->Cell(40,6,'TANGGAL',1,0);
+		$pdf->Cell(40,6,'BULAN',1,0);
+		$pdf->Cell(40,6,'TAHUN',1,0);
+		$pdf->Cell(40,6,'KETERANGAN',1,0);
+		$pdf->Cell(40,6,'DOKUMEN',1,0);
+		
+		$pdf->SetFont('Arial','B','12');
+		
+		$this->load->model('web_model');
+		$data=$this->web_model->laporan_explicit();
+		foreach ($data as $row){
+		$$pdf->Cell(15,6,$row->id_explicit,1,0);
+		$pdf->Cell(40,6,$row->nama,1,0);
+		$pdf->Cell(40,6,$row->judul_explicit,1,0);
+		$pdf->Cell(40,6,$row->tgl_post,1,0);
+		$pdf->Cell(40,6,$row->bulan,1,0);
+		$pdf->Cell(40,6,$row->tahun,1,0);
+		$pdf->Cell(40,6,$row->keterangan,1,0);
+		$pdf->Cell(35,6,$row->userfile,1,0);
+		}
+		$pdf->Output();
+		
+
+
+
+
+
+$hasil= $this->db->query("SELECT pengguna.id_pengguna, pengguna.nama, explicit.judul_explicit, explicit.tgl_post, explicit.bulan, explicit.tahun, explicit.keterangan, explicit.userfile FROM pengguna
+	INNER JOIN explicit ON pengguna.id_pengguna=explicit.id_pengguna
+	");
+	return $hasil->result();
+
+
+function laporan_explicit($idpengguna){
+	 $sql=" select *
+    from pengguna as p
+    inner join explicit as e on p.id_pengguna=e.id_pengguna
+    where p.id_pengguna='".$idpengguna."'";
+
+    return $this->db->query($sql);
+	}
+
+
+$idpengguna=2;
+	$hasil= $this->db->query("select *
+    from pengguna as p
+    inner join explicit as e on p.id_pengguna=e.id_pengguna
+    where p.id_pengguna='".$idpengguna."'");
+	return $hasil->result();
+
+
+
+KEMENTRIAN AGAMA REPUBLIK INDONESIA
+
+INSTITUT AGAMA ISLAM NEGERI
+
+BENGKULU
+
+Jalan Raden Fatah Pagar Dewa Kota Bengkulu 38211
+
+Telepon (0736) 51276-51171-51172-53879 Faksimili (0736) 51171-51172
+
+Website: www.iainbengkulu.ac.id
+
+
+
+pelanggan : pengguna
+
+pesan : explicit
+
+
+
+	$pdf->SetFont('Arial','B','12');
+		$pdf->Cell(25,6,'ID',1,0,'C');
+		$pdf->Cell(35,6,'NAMA USER',1,0,'C');
+		$pdf->Cell(40,6,'JUDUL',1,0,'C');
+		$pdf->Cell(35,6,'TANGGAL',1,0,'C');
+		$pdf->Cell(25,6,'BULAN',1,0,'C');
+		$pdf->Cell(25,6,'TAHUN',1,0,'C');
+		$pdf->Cell(40,6,'KETERANGAN',1,0,'C');
+		$pdf->Cell(45,6,'DOKUMEN',1,1,'C');
+		$pdf->SetFont('Arial','B','12');
+
+
+
+
+
+
+
+
+$pdf->Cell(15,9,'',0,1,'C');
+		
+$pdf->SetFont('Arial','B','12');
+		
+$pdf->Cell(25,6,'ID',1,0,'C');
+		
+$pdf->Cell(35,6,'NAMA USER',1,0,'C');
+		
+$pdf->Cell(40,6,'JUDUL',1,0,'C');
+		
+$pdf->Cell(35,6,'TANGGAL',1,0,'C');
+		
+$pdf->Cell(25,6,'BULAN',1,0,'C');
+		
+$pdf->Cell(25,6,'TAHUN',1,0,'C');
+		
+$pdf->Cell(40,6,'KETERANGAN',1,0,'C');
+		
+$pdf->Cell(45,6,'DOKUMEN',1,1,'C');
+		
+$pdf->SetFont('Arial','B','12');
+		
+		
+
+$this->load->model('web_model');
+		
+$data=$this->web_model->laporan_explicit();
+		
+foreach ($data as $row){
+		
+$pdf->Cell(25,6,$row->id_pengguna,1,0);
+		
+$pdf->Cell(35,6,$row->nama,1,0);
+		
+$pdf->MultiCell(40,6,$row->judul_explicit,1,0);
+		
+$pdf->MultiCell(35,6,$row->tgl_post,1,0);
+		
+$pdf->Cell(25,6,$row->bulan,1,0);
+		
+$pdf->Cell(25,6,$row->tahun,1,0);
+		
+$pdf->MultiCell(40,6,$row->keterangan,1,0);
+		
+$pdf->MultiCell(45,6,$row->userfile,1,1);
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

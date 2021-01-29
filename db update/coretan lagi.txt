@@ -1,0 +1,98 @@
+$pdf= new FPDF('L','mm','A4');
+	
+		$pdf->AddPage();
+		
+		$pdf->SetFont('Arial','B','16');
+		$ya=44;
+		
+		$pdf->image('photo/puskom.png',32,12,35,35);
+		$pdf->SetFont('Arial','B','16');
+		$pdf->Cell(290,7,"KEMENTRIAN AGAMA REPUBLIK INDONESIA",0,1,'C');
+		$pdf->SetFont('Arial','B','16');
+		$pdf->Cell(290,7,"INSTITUT AGAMA ISLAM NEGERI",0,1,'C');
+		$pdf->SetFont('Arial','B','16');
+		$pdf->Cell(290,7,"BENGKULU",0,1,'C');
+		$pdf->SetFont('Arial','','12');
+		$pdf->Cell(290,7,"Jalan Raden Fatah Pagar Dewa Kota Bengkulu 38211",0,1,'C');
+		$pdf->SetFont('Arial','','12');
+		$pdf->Cell(290,7,"Telepon (0736) 51276-51171-51172-53879 Faksimili (0736) 51171-51172",0,1,'C');
+		$pdf->SetFont('Arial','','12');
+		$pdf->Cell(290,7,"Website: www.iainbengkulu.ac.id",0,1,'C');
+		$pdf->SetFont('Arial','B','10');
+		$pdf->Cell(280,2,"_____________________________________________________________________________________________________________________________",0,2,'C');
+		
+		$pdf->SetFont('Arial','B','16');
+		$pdf->Cell(280,15,'Laporan Knowledge Explicit | Laporan Pengetahuan Explicit Pusat Komputer IAIN Bengkulu',0,1,'C');
+		$pdf->SetFont('Arial','B','14');
+		$pdf->Cell(280,9,'Daftar Pengetahuan Explicit Pegawai Pusat Komputer 2019',0,1,'C');
+		
+		$pdf->Cell(15,9,'',0,1,'C');
+		$pdf->SetFont('Arial','B','12');
+		$pdf->Cell(25,6,'ID',1,0,'C');
+		$pdf->Cell(35,6,'NAMA USER',1,0,'C');
+		$pdf->Cell(40,6,'JUDUL',1,0,'C');
+		$pdf->Cell(35,6,'TANGGAL',1,0,'C');
+		$pdf->Cell(25,6,'BULAN',1,0,'C');
+		$pdf->Cell(25,6,'TAHUN',1,0,'C');
+		$pdf->Cell(40,6,'KETERANGAN',1,0,'C');
+		$pdf->Cell(45,6,'DOKUMEN',1,1,'C');
+		$pdf->SetFont('Arial','B','12');
+		
+		$this->load->model('web_model');
+		$data=$this->web_model->laporan_explicit();
+		foreach ($data as $row){
+		$pdf->Cell(25,6,$row->id_pengguna,1,0);
+		$pdf->Cell(35,6,$row->nama,1,0);
+		$pdf->Cell(40,6,$row->judul_explicit,1,0);
+		$pdf->Cell(35,6,$row->tgl_post,1,0);
+		$pdf->Cell(25,6,$row->bulan,1,0);
+		$pdf->Cell(25,6,$row->tahun,1,0);
+		$pdf->Cell(40,6,$row->keterangan,1,0);
+		$pdf->Cell(45,6,$row->userfile,1,1);
+		}
+		$pdf->Output();
+
+
+
+
+
+
+
+$pdf->Cell(15,9,'',0,1,'C');
+	
+$pdf->SetFont('Arial','B','12');
+
+$pdf->Cell(25,6,'ID',1,0,'C');
+	
+$pdf->Cell(35,6,'NAMA USER',1,0,'C');
+		
+$pdf->Cell(40,6,'JUDUL',1,0,'C');
+		
+$pdf->Cell(35,6,'TANGGAL',1,0,'C');
+		
+$pdf->Cell(25,6,'BULAN',1,0,'C');
+		
+$pdf->Cell(25,6,'TAHUN',1,0,'C');
+		
+$pdf->Cell(40,6,'KETERANGAN',1,0,'C');
+		
+$pdf->Cell(45,6,'DOKUMEN',1,1,'C');
+		
+$pdf->SetFont('Arial','B','12');
+
+
+$pdf->Cell(25,6,$row->id_pengguna,1,0);
+		
+$pdf->Cell(35,6,$row->nama,1,0);
+		
+$pdf->Cell(40,6,$row->judul_explicit,1,0);
+		
+$pdf->Cell(35,6,$row->tgl_post,1,0);
+		
+$pdf->Cell(25,6,$row->bulan,1,0);
+		
+$pdf->Cell(25,6,$row->tahun,1,0);
+		
+$pdf->Cell(40,6,$row->keterangan,1,0);
+		
+$pdf->Cell(45,6,$row->userfile,1,1);
